@@ -37,7 +37,7 @@
       flex-direction: column;
       width: 100%;
       max-width: 500px;
-      height: 100vh;
+      height: 98%;
       margin: auto;
       background: white;
       border-radius: 16px;
@@ -235,14 +235,14 @@
   <div class="chat-container">
     <div class="chat-header">
       <div class="chat-header2">
-        💬Drx Chat  <span id="usernameDisplay" class="username-display">— Hello, <strong>Bro</strong>!</span>
+        💬Drx Chat <span id="usernameDisplay" class="username-display">— Hello, <strong>Bro</strong>!</span>
       </div>
       <button class="btn btn-sm btn-light" data-bs-toggle="modal" data-bs-target="#usernameModal">👤</button>
       <button class="btn btn-sm btn-dark" id="toggleBtn">🌙</button>
     </div>
 
     <div class="chat-box" id="chat_box">
-Wellcome
+      Wellcome
     </div>
 
     <div class="input-area" id='chatip'>
@@ -316,7 +316,7 @@ Wellcome
         return alert('put val')
       }
       let arr = localStorage.getItem('max') || 'anormas';
-      glod = [text,arr]
+      glod = [text, arr]
       socket.emit('custom_event2', { asd: glod });
       document.getElementById('msg').value = ''
       str += `<div class="message user"><span class="username">${glod[1]}:</span> ${glod[0]}</div>`
@@ -324,7 +324,7 @@ Wellcome
       chat.innerHTML = str
 
     })
-    
+
     // fech data from server
     socket.on('server_event1', function (data) {
 
@@ -334,7 +334,7 @@ Wellcome
         console.log("Server says:", (data['response']));
 
         if (!check) {
-                  let mdata = data['response']
+          let mdata = data['response']
           str += `<div class="message bot"><span class="username">${mdata[1]}:</span> ${mdata[0]}</div>`
           let chat = document.getElementById('chat_box')
           chat.innerHTML = str
@@ -362,10 +362,10 @@ Wellcome
       }
 
     });
-  
+
     function setname() {
-      let username = document.getElementById('nameset').value || 'anormas' ;
-     
+      let username = document.getElementById('nameset').value || 'anormas';
+
 
       localStorage.setItem('max', username);
       console.log(username)
