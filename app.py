@@ -1,5 +1,8 @@
+import os
 from flask import Flask, render_template
 from flask_socketio import SocketIO, send, emit
+import eventlet
+eventlet.monkey_patch()
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'secret!'
@@ -23,7 +26,6 @@ def custom_handler2(data):
     print(data['asd'])
     emit('server_event', {'response': data['asd']}, broadcast=True)
 
-    
 if __name__ == '__main__':
-    socketio.run(app, debug=True, allow_unsafe_werkzeug=True)
-
+    port = int(os.environ.get('PORT', 5000))
+    socketio.run(app, host='0.0.0.0', port=port)
